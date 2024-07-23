@@ -1,14 +1,19 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    git
+# Update and install necessary packages
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip git && \
+    apt-get clean
 
+# Install PyYAML package
 RUN pip3 install PyYAML
 
+# Copy the Python script to /usr/bin
 COPY travel_calculator.py /usr/bin/travel_calculator.py
 
+# Copy the entrypoint script to /usr/bin and ensure it is executable
 COPY entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+# Set the entrypoint
+ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
