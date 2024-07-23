@@ -8,8 +8,11 @@ RUN apt-get update && \
 # Install PyYAML package
 RUN pip3 install PyYAML
 
-# Copy the Python script to /usr/bin
-COPY travel_calculator.py /usr/bin/travel_calculator.py
+# Create an app directory
+RUN mkdir -p /app
+
+# Copy the Python script to /app
+COPY travel_calculator.py /app/travel_calculator.py
 
 # Copy the entrypoint script to /usr/bin and ensure it is executable
 COPY entrypoint.sh /usr/bin/entrypoint.sh
