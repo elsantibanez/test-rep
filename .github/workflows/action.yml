@@ -1,0 +1,28 @@
+name: "Travel Calculator"
+author: "Manuel Santibanez"
+description: "Calculate the cost of a trip"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  color: "blue"
+  icon: "map"
+
+inputs:
+  email:
+    description: "Email"
+    required: true
+    default: "${{ github.actor }}@localhost"
+    type: string
+
+  name:
+    description: "The committer's name"
+    required: true
+    default: "Manuel"
+    type: string
+    minLength: 3
+    maxLength: 10
+    pattern: "^[a-zA-Z]+$"
+    errorMessage: "Name must be a string with only letters"
