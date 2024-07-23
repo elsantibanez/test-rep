@@ -1,0 +1,22 @@
+name: "Travel Calculator"
+author: "Manuel Santibanez"
+description: "Calculate the cost of a trip"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  color: "blue"
+  icon: "map"
+
+inputs:
+  email:
+    description: "Email"
+    required: true
+    default: "${{ github.actor }}@users.noreply.github.com"
+
+  name:
+    description: "The committer's name"
+    required: true
+    default: "${{ github.actor }}"
