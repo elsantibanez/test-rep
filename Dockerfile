@@ -1,9 +1,12 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
 # Update and install necessary packages
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip git && \
-    apt-get clean
+    apt-get install -y python3 python3-pip git build-essential && \
+    python3 -m pip install --no-cache-dir --upgrade pip && \
+    pip3 install --no-cache-dir PyYAML && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install PyYAML package
 RUN pip3 install PyYAML
